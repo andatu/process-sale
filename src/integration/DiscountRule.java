@@ -6,7 +6,7 @@ import model.Sale;
  * Dummy database for discount
  */
 public class DiscountRule {
-    public double percentageOff;
+    private double percentageOff;
 
     public DiscountRule(){
         this.percentageOff = 0;

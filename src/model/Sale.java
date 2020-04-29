@@ -12,7 +12,7 @@ public class Sale {
     /**
      *  Creates a new instance and saves the time of the sale.
      */
-    public Printer printer;
+    private Printer printer;
     private Payment payment;
     private LocalDateTime ldt = LocalDateTime.now();
     private ItemInSale[] items = new ItemInSale[10]; //THIS WILL BE CHANGED TO ARRAYLIST FOR LAB 4
@@ -36,13 +36,14 @@ public class Sale {
      * @param numberOfItems how many of these specific items
      */
     public void addItem(ItemDTO addItem, int numberOfItems){
-        if(!doesExist(addItem.itemID)){
+        if(!doesExist(addItem.getItemID())){
             aI(addItem, numberOfItems);
         }
         else{
             for(int i = 0; i < numberOfTotalDifferentItems; i++){
-                if(addItem.itemID == items[i].itemDTO.itemID){
-                    items[i].howMany += numberOfItems;
+                if(addItem.getItemID() == items[i].getItemDTO().getItemPrice()){
+                    //items[i].getHowMany() += numberOfItems;
+                    items[i].setHowMany(numberOfItems);
                     break;
                 }
             }
@@ -58,7 +59,7 @@ public class Sale {
     public boolean doesExist(int id){
         boolean tof = false;
         for(int i = 0; i < numberOfTotalDifferentItems; i++){
-            if(items[i].itemDTO.itemID == id){
+            if(items[i].getItemDTO().getItemID() == id){
                 tof = true;
                 break;
             }
@@ -101,8 +102,8 @@ public class Sale {
         double totalPriceI = 0;
         double totalVAT = 0;
         for(int i = 0; i < numberOfTotalDifferentItems; i++){
-            totalPriceI += items[i].itemDTO.itemPrice * items[i].howMany;
-            totalVAT += items[i].itemDTO.itemPrice * items[i].itemDTO.itemVAT/100 * items[i].howMany;
+            totalPriceI += items[i].getItemDTO().getItemPrice() * items[i].getHowMany();
+            totalVAT += items[i].getItemDTO().getItemPrice() * items[i].getItemDTO().getItemVAT()/100 * items[i].getHowMany();
         }
         this.totalPrice = totalPriceI;
         this.totalVAT = totalVAT;

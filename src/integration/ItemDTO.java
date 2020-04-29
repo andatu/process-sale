@@ -5,10 +5,10 @@ package integration;
  * Class creating the item to be worked with in the program. From the database.
  */
 public class ItemDTO {
-    public String itemDesc;
-    public double itemPrice;
-    public int itemID;
-    public int itemVAT;
+    private String itemDesc;
+    private double itemPrice;
+    private int itemID;
+    private int itemVAT;
 
     public ItemDTO(String itemDesc, double itemPrice, int itemID, int itemVAT){
         this.itemDesc = itemDesc;
@@ -17,4 +17,19 @@ public class ItemDTO {
         this.itemVAT = itemVAT;
     }
 
+    public String getItemDesc() {
+        return itemDesc;
+    }
+
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public int getItemID() {
+        return itemID;
+    }
+
+    public int getItemVAT() {
+        return itemVAT;
+    }
 }

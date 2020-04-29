@@ -38,7 +38,7 @@ class InventorySystemTest {
     @Test
     void getItemExists() {
         ItemDTO x = invSys.getItem(3);
-        assertSame("Milk", x.itemDesc);
+        assertSame("Milk", x.getItemDesc());
     }
 
     @Test

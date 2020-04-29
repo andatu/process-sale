@@ -50,8 +50,8 @@ class SaleTest {
         sale.addItem(two, 3);
         sale.addItem(three, 1);
         assertEquals(640, sale.getTotalPrice());
-        assertEquals(3, sale.getItems()[1].howMany);
-        assertEquals(1, sale.getItems()[1].itemDTO.itemID);
+        assertEquals(3, sale.getItems()[1].getHowMany());
+        assertEquals(1, sale.getItems()[1].getItemDTO().getItemID());
         assertNull(sale.getItems()[3]);
     }
 
@@ -94,7 +94,7 @@ class SaleTest {
         sale.addItem(two, 1);
         sale.addItem(three, 1);
         Payment payment = sale.pay(450);
-        assertEquals(450, payment.amount, "this");
-        assertEquals(250, payment.change, "that");
+        assertEquals(450, payment.getAmount(), "this");
+        assertEquals(250, payment.getChange(), "that");
     }
 }

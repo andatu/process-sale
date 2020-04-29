@@ -45,7 +45,7 @@ public class Controller {
     public String registerItem(int itemID, int numberOfItems){
         ItemDTO item = inventorySystem.getItem(itemID);
         sale.addItem(item, numberOfItems);
-        return item.itemDesc + " " + item.itemPrice;
+        return item.getItemDesc() + " " + item.getItemPrice();
     }
 
     /**
@@ -70,7 +70,7 @@ public class Controller {
         inventorySystem.updateInventory(sale);
         accountingSystem.updateAccounting(sale);
         salesLog.updateSalesLog(sale);
-        return payment.change;
+        return payment.getChange();
     }
 
     /**

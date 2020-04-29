@@ -18,6 +18,6 @@ class PaymentTest {
         sale.addItem(one, 1);
         sale.addItem(two, 1);
         payment = new Payment(sale, 400);
-        assertEquals(400, payment.amount);
+        assertEquals(400, payment.getAmount());
     }
 }

@@ -12,8 +12,8 @@ public class CashRegister {
      * @param payment of the sale
      */
     public void addPayment(Payment payment){
-        this.cashInRegister += payment.amount - payment.change;
-        System.out.println("Adding " + (payment.amount - payment.change) + " to the Cash Register");
+        this.cashInRegister += payment.getAmount() - payment.getChange();
+        System.out.println("Adding " + (payment.getAmount() - payment.getChange()) + " to the Cash Register");
     }
 
     public double getCashInRegister(){

@@ -24,7 +24,7 @@ public class InventorySystem {
         //find the item in itemLIST
         boolean tof = false;
         for (ItemDTO item : items) {
-            if (item.itemID == itemID) {
+            if (item.getItemID() == itemID) {
                 tof = true;
                 break;
             }
@@ -42,7 +42,7 @@ public class InventorySystem {
        // boolean tof = itemExists(itemID);
         ItemDTO returnedItem = null;
         for (int i = 0; i < this.numberOfItems; i++) {
-            if (itemID == this.items[i].itemID) {
+            if (itemID == this.items[i].getItemID()) {
                 returnedItem = this.items[i];
                 break;
             }

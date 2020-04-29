@@ -38,14 +38,14 @@ public class Receipt {
         System.out.print(sale.getLdt().format(formatter) + "\n" + sale.getStoreName() + "\n" + sale.getStoreAdress());
         System.out.println("\n\n" + "Item description  " + "Price  " + "    VAT  " + "Quantity");
         for(int i = 0; i < sale.getNumberOfTotalDifferentItems(); i++) {
-            System.out.printf("%-17s %-10.2f %d %4d\n", sale.getItems()[i].itemDTO.itemDesc, sale.getItems()[i].itemDTO.itemPrice,
-                    sale.getItems()[i].itemDTO.itemVAT, sale.getItems()[i].howMany);
+            System.out.printf("%-17s %-10.2f %d %4d\n", sale.getItems()[i].getItemDTO().getItemDesc(), sale.getItems()[i].getItemDTO().getItemPrice(),
+                    sale.getItems()[i].getItemDTO().getItemVAT(), sale.getItems()[i].getHowMany());
         }
         System.out.println("" + "\nTotal price:      " + sale.getTotalPrice()
                 + "\nTotal VAT:        " + sale.getTotalVAT()
                 + "\nTotal to pay:     " + sale.getTotalPriceAndVAT()
-                + "\n\nTotal Payed:      " + sale.getPayment().amount
-                + "\nChange:           " + sale.getPayment().change
+                + "\n\nTotal Payed:      " + sale.getPayment().getAmount()
+                + "\nChange:           " + sale.getPayment().getChange()
                 + "\n*******Receipt Done*******\n");
     }
 }
