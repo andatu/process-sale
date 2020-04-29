@@ -35,9 +35,7 @@ public class Controller {
      * Starts a new sale. This method must be called before doing anything else.
      * Starts the sale with the printer.
      */
-    public void newSale(){
-        sale = new Sale(printer);
-    }
+    public void newSale(){ sale = new Sale(printer); }
 
     /**
      *
