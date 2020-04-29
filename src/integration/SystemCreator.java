@@ -1,5 +1,8 @@
 package integration;
 
+/**
+ * Creates all needed systems.
+ */
 public class SystemCreator {
     private InventorySystem inventorySystem;
     private AccountingSystem accountingSystem;
@@ -8,11 +11,9 @@ public class SystemCreator {
         inventorySystem = new InventorySystem();
         accountingSystem = new AccountingSystem();
     }
-
     public AccountingSystem getAccountingSystem(){
         return accountingSystem;
     }
-
     public InventorySystem getInventorySystem(){
         return inventorySystem;
     }

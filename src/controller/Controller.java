@@ -48,9 +48,12 @@ public class Controller {
         ItemDTO item = inventorySystem.getItem(itemID);
         sale.addItem(item, numberOfItems);
         return item.itemDesc + " " + item.itemPrice;
-
     }
 
+    /**
+     * requests discount for a customer and applies the new total price to sale
+     * @param customerID unique customerID
+     */
     public void discountRequest(int customerID){
         this.discount = new Discount();
         double newTotal = discount.discountRequest(customerID, sale);
@@ -58,6 +61,11 @@ public class Controller {
         sale.applyDiscount(newTotal);
     }
 
+    /**
+     * Makes the payment of the sale
+     * @param amount the amount to be payed
+     * @return change back to view so the cashier can see it
+     */
     public double payment(double amount){
         Payment payment = sale.pay(amount);
         cashRegister.addPayment(payment);
@@ -67,6 +75,9 @@ public class Controller {
         return payment.change;
     }
 
+    /**
+     * Just ends sale, no function right now, might be added something later.
+     */
     public void endSale(){
     }
 

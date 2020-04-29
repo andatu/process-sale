@@ -15,6 +15,11 @@ public class InventorySystem {
         addItems();
     }
 
+    /**
+     * Checks if items exists. This function seems unnecessary
+     * @param itemID the item that is being registered
+     * @return tof a boolean
+     */
     public boolean itemExists(int itemID) {
         //find the item in itemLIST
         boolean tof = false;
@@ -28,6 +33,11 @@ public class InventorySystem {
         return tof;
     }
 
+    /**
+     * Gets the item from database if it exists
+     * @param itemID the item that is being registered
+     * @return the item if it exists, else null
+     */
     public ItemDTO getItem(int itemID){
        // boolean tof = itemExists(itemID);
         ItemDTO returnedItem = null;

@@ -2,6 +2,9 @@ package integration;
 
 import model.Sale;
 
+/**
+ * Dummy database for discount
+ */
 public class DiscountRule {
     public double percentageOff;
 
@@ -9,6 +12,12 @@ public class DiscountRule {
         this.percentageOff = 0;
     }
 
+    /**
+     * Checks the database for discount
+     * @param customerID the customers id
+     * @param sale the sale the customer do
+     * @return returns the percentage off for the whole sale
+     */
     public double checkDiscount(int customerID, Sale sale){
         this.percentageOff = 20;
         return percentageOff/100;

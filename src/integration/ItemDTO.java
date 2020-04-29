@@ -1,5 +1,9 @@
 package integration;
 
+
+/**
+ * Class creating the item to be worked with in the program. From the database.
+ */
 public class ItemDTO {
     public String itemDesc;
     public double itemPrice;

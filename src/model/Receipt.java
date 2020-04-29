@@ -3,10 +3,19 @@ package model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Creates receipt of the sale
+ */
 public class Receipt {
     Sale sale;
     public Receipt(Sale sale){ this.sale = sale; }
 
+
+    /**
+     * Prints out the receipt.
+     * Called from printer.
+     * Out commented code is the one that should run, but for alignment effects in printout second part is run.
+     */
     //public String toString() {
     public void print() {
        /* DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
@@ -23,6 +32,7 @@ public class Receipt {
                 + "\nChange: " + sale.getPayment().change
                 + "\n*******Receipt Done*******\n";*/
         //return string;
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
         System.out.println("\n*******Printing Receipt*******");
         System.out.print(sale.getLdt().format(formatter) + "\n" + sale.getStoreName() + "\n" + sale.getStoreAdress());

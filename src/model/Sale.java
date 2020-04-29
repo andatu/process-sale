@@ -8,8 +8,6 @@ import java.time.LocalDateTime;
 /**
  * One single sale made by one costumer and payed with one payment
  */
-
-
 public class Sale {
     /**
      *  Creates a new instance and saves the time of the sale.
@@ -19,8 +17,6 @@ public class Sale {
     private LocalDateTime ldt = LocalDateTime.now();
     private ItemInSale[] items = new ItemInSale[10]; //THIS WILL BE CHANGED TO ARRAYLIST FOR LAB 4
     private int numberOfTotalDifferentItems = 0;
-    private String storeAdress = "Kistavägen 32, 13423 Kista";
-    private String storeName = "Butiken i hörnet";
     /*public double totalPrice = 0; //VAT excludued
     public double totalVAT = 0; //VAT
     public double totalPriceAndVAT = 0;*/
@@ -136,8 +132,10 @@ public class Sale {
 
     //GETTERS-----------SETTERS
     public LocalDateTime getLdt(){ return this.ldt; }
-    public String getStoreAdress(){ return this.storeAdress; }
-    public String getStoreName(){ return this.storeName; }
+    public String getStoreAdress(){
+        return "Kistavägen 32, 13423 Kista"; }
+    public String getStoreName(){
+        return "Butiken i hörnet"; }
     public int getNumberOfTotalDifferentItems(){ return this.numberOfTotalDifferentItems; }
     public double getTotalPriceAndVAT() { return this.totalPriceAndVAT; }
     public double getTotalPrice(){ return this.totalPrice; }

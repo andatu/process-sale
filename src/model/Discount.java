@@ -2,6 +2,9 @@ package model;
 
 import integration.DiscountRule;
 
+/**
+ *
+ */
 public class Discount {
     public DiscountRule dr = new DiscountRule();
 
