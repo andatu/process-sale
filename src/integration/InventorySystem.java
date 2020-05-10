@@ -1,17 +1,26 @@
 package integration;
 
+import exceptions.IDNotFoundException;
 import model.Sale;
 
 /**
- * Dummy inventorysystem which is supposed to get item from database and create ItemDTOs to store.
+ * Dummy inventory system which is supposed to get item from database and create ItemDTOs to store.
  * Now ItemDTOs are created manually instead,
  */
 public class InventorySystem {
-
+    private static final InventorySystem INSTANCE = new InventorySystem();
     private ItemDTO[] items = new ItemDTO[10];
     private int numberOfItems = 0;
 
-    InventorySystem(){
+    /**
+     *
+     * @return the only existing instance of this singleton.
+     */
+    public static InventorySystem getInventory(){
+        return INSTANCE;
+    }
+
+    private InventorySystem(){
         addItems();
     }
 
@@ -38,14 +47,16 @@ public class InventorySystem {
      * @param itemID the item that is being registered
      * @return the item if it exists, else null
      */
-    public ItemDTO getItem(int itemID){
+    public ItemDTO getItem(int itemID) {
        // boolean tof = itemExists(itemID);
         ItemDTO returnedItem = null;
         for (int i = 0; i < this.numberOfItems; i++) {
             if (itemID == this.items[i].getItemID()) {
                 returnedItem = this.items[i];
                 break;
-            }
+            }/*else{
+                throw new IDNotFoundException("No item with that item ID");
+            }*/
         }
         return returnedItem;
     }

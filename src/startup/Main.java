@@ -12,7 +12,7 @@ public class Main {
      * This starts the whole program
      * @param args, nothing to be passed
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         SystemCreator sysC = new SystemCreator();
         Printer printer = new Printer();

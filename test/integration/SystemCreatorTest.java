@@ -12,7 +12,7 @@ class SystemCreatorTest {
 
     @BeforeEach
     void setUp() {
-        inventorySystem = new InventorySystem();
+        inventorySystem = InventorySystem.getInventory();
         accountingSystem = new AccountingSystem();
     }
 

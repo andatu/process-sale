@@ -1,5 +1,7 @@
 package model;
 
+import integration.Rounder;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -43,9 +45,10 @@ public class Receipt {
         }
         System.out.println("" + "\nTotal price:      " + sale.getTotalPrice()
                 + "\nTotal VAT:        " + sale.getTotalVAT()
-                + "\nTotal to pay:     " + sale.getTotalPriceAndVAT()
+                + "\nTotal Discount:   " + Rounder.round(sale.getDiscount())
+                + "\nTotal to pay:     " + Rounder.round(sale.getTotalPriceAndVAT())
                 + "\n\nTotal Payed:      " + sale.getPayment().getAmount()
-                + "\nChange:           " + sale.getPayment().getChange()
+                + "\nChange:           " + Rounder.round(sale.getPayment().getChange())
                 + "\n*******Receipt Done*******\n");
     }
 }

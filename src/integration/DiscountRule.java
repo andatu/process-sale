@@ -4,6 +4,9 @@ import model.Sale;
 
 /**
  * Dummy database for discount
+ *
+ * not used anymore
+ *
  */
 public class DiscountRule {
     private double percentageOff;

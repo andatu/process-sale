@@ -1,15 +1,19 @@
 package model;
 
-import integration.DiscountRule;
+import integration.discount.IDiscountBehavior;
 
 /**
  *
  */
 public class Discount {
-    public DiscountRule dr = new DiscountRule();
+    public IDiscountBehavior db;
 
-    public double discountRequest(int customerID, Sale sale){
-        double discount = dr.checkDiscount(customerID, sale);
-        return sale.getTotalPriceAndVAT() * (1-discount);
+    public Discount(IDiscountBehavior db){
+        this.db = db;
     }
+
+    public double executeStrategy(int customerID, Sale sale){
+        return this.db.discountRequest(customerID, sale);
+    }
+
 }

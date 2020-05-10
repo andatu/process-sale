@@ -1,5 +1,6 @@
 package controller;
 
+import integration.ItemNotFoundException;
 import integration.Printer;
 import integration.SalesLog;
 import integration.SystemCreator;
@@ -44,7 +45,7 @@ class ControllerTest {
     }
 
     @Test
-    void registerItem() {
+    void registerItem() throws ItemNotFoundException {
         contr.newSale();
         String actualResult = contr.registerItem(0,2);
         String expectedResult = "Apple";
@@ -56,7 +57,7 @@ class ControllerTest {
     }
 
     @Test
-    void payment() {
+    void payment() throws ItemNotFoundException {
         contr.newSale();
         contr.registerItem(0,2);
         double actualResult = contr.payment(400);

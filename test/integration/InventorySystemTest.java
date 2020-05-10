@@ -20,7 +20,7 @@ class InventorySystemTest {
 
     @BeforeEach
     void setUp() {
-        invSys = new InventorySystem();
+        invSys = InventorySystem.getInventory();
 
         os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -36,13 +36,13 @@ class InventorySystemTest {
     }
 
     @Test
-    void getItemExists() {
+    void getItemExists() throws ItemNotFoundException {
         ItemDTO x = invSys.getItem(3);
         assertSame("Milk", x.getItemDesc());
     }
 
     @Test
-    void getItemNotExists(){
+    void getItemNotExists() throws ItemNotFoundException {
         ItemDTO x = invSys.getItem(412);
         assertNull(x);
     }

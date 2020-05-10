@@ -17,12 +17,10 @@ public class Sale {
     private LocalDateTime ldt = LocalDateTime.now();
     private ItemInSale[] items = new ItemInSale[10]; //THIS WILL BE CHANGED TO ARRAYLIST FOR LAB 4
     private int numberOfTotalDifferentItems = 0;
-    /*public double totalPrice = 0; //VAT excludued
-    public double totalVAT = 0; //VAT
-    public double totalPriceAndVAT = 0;*/
     private double totalPrice = 0; //VAT excludued
     private double totalVAT = 0; //VAT
     private double totalPriceAndVAT = 0;
+    private double discount;
 
 
     public Sale(Printer printer){
@@ -42,7 +40,6 @@ public class Sale {
         else{
             for(int i = 0; i < numberOfTotalDifferentItems; i++){
                 if(addItem.getItemID() == items[i].getItemDTO().getItemPrice()){
-                    //items[i].getHowMany() += numberOfItems;
                     items[i].setHowMany(numberOfItems);
                     break;
                 }
@@ -92,6 +89,7 @@ public class Sale {
     }
 
     public void applyDiscount(double newTotal){
+        this.discount = totalPriceAndVAT - newTotal;
         this.totalPriceAndVAT = newTotal;
     }
 
@@ -144,4 +142,5 @@ public class Sale {
     public ItemInSale[] getItems() { return this.items; }
     public Payment getPayment(){ return this.payment; }
     public void setTotalPriceAndVAT(double x){ this.totalPriceAndVAT = x; }
+    public double getDiscount(){return this.discount;}
 }

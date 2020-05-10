@@ -1,6 +1,10 @@
 package view;
 
 import controller.Controller;
+import integration.ConnectionToDBFailedException;
+import integration.ItemNotFoundException;
+import integration.Rounder;
+import model.Observer;
 
 import java.util.Scanner;
 
@@ -9,6 +13,8 @@ public class View {
 
     public View(Controller contr) {
         this.contr = contr;
+        contr.addPaymentObserver(new TotalRevenueDisplay());
+        //contr.addPaymentObserver(new TotalRevenueDisplay());
     }
 
     /**
@@ -31,7 +37,13 @@ public class View {
 
         System.out.println("\nEnding Sale");
         contr.endSale();
-        System.out.println("\nTotal with VAT is: " + contr.getTotalPriceAndVat());
+
+        /**
+         * Applying discount with Strategy pattern
+         */
+        System.out.println("\nTotal with VAT is: " + Rounder.round(contr.getTotalPriceAndVat()));
+
+
         /*System.out.println("1:Pay or 2:Discount?");
         //int answer = sc.nextInt();   //DISCOUNT FÖR SEM 4
         int answer = 2; //***********
@@ -43,13 +55,15 @@ public class View {
             contr.discountRequest(id);
             System.out.println("\nTotal with VAT including discount is: " + contr.sale.totalPriceAndVAT);
         }*/
-
+        //System.out.println("Price after discount: " + contr.discountRequest(0));
+        System.out.println("Price after discount: " + Rounder.round(contr.discountRequest(0)));
         System.out.println("How much are you paying?");
         //double moneys = sc.nextDouble();
         double moneys = 1000; //********
         System.out.println("Paying with: " + moneys);
         double change = contr.payment(moneys);
-        System.out.println("\nChange back to customer: " + change);
+        System.out.println("\nChange back to customer: " + Rounder.round(change));
+
 
     }
 }

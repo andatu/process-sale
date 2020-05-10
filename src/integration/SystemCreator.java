@@ -8,7 +8,8 @@ public class SystemCreator {
     private AccountingSystem accountingSystem;
 
     public SystemCreator(){
-        inventorySystem = new InventorySystem();
+        //inventorySystem = new InventorySystem();
+        inventorySystem = InventorySystem.getInventory();
         accountingSystem = new AccountingSystem();
     }
     public AccountingSystem getAccountingSystem(){

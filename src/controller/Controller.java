@@ -1,10 +1,11 @@
 package controller;
 
 import integration.*;
-import model.CashRegister;
-import model.Discount;
-import model.Payment;
-import model.Sale;
+import integration.discount.DiscountStrategyOne;
+import model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,6 +22,7 @@ public class Controller {
     public InventorySystem inventorySystem;
     public Sale sale;
     public Discount discount;
+    private List<Observer> observerList = new ArrayList<>();
 
     public Controller(SystemCreator sysC, Printer printer, CashRegister cashRegister, SalesLog salesLog){
         this.sysC = sysC;
@@ -50,13 +52,18 @@ public class Controller {
 
     /**
      * requests discount for a customer and applies the new total price to sale
+     *
+     * Here we could have that depending on customerID and Sale choose
+     * which strategy to use, for now we only have one and that is
+     * applied here
+     *
      * @param customerID unique customerID
      */
-    public void discountRequest(int customerID){
-        this.discount = new Discount();
-        double newTotal = discount.discountRequest(customerID, sale);
-        System.out.println(newTotal);
+    public double discountRequest(int customerID){
+        this.discount = new Discount(new DiscountStrategyOne());
+        double newTotal = discount.executeStrategy(customerID, sale);
         sale.applyDiscount(newTotal);
+        return newTotal;
     }
 
     /**
@@ -70,6 +77,7 @@ public class Controller {
         inventorySystem.updateInventory(sale);
         accountingSystem.updateAccounting(sale);
         salesLog.updateSalesLog(sale);
+        payment.addPaymentObservers(observerList);
         return payment.getChange();
     }
 
@@ -81,6 +89,10 @@ public class Controller {
 
     public double getTotalPriceAndVat(){
         return sale.getTotalPriceAndVAT();
+    }
+
+    public void addPaymentObserver(Observer obs){
+        observerList.add(obs);
     }
 
 }
