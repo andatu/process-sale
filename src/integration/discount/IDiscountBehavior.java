@@ -2,7 +2,10 @@ package integration.discount;
 
 import model.Sale;
 
+/**
+ * Interface for discount calculations
+ */
 public interface IDiscountBehavior {
 
-    double discountRequest(int CustomerID, Sale sale);
+    double discountRequest(int customerID, Sale sale);
 }

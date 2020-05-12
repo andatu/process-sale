@@ -1,7 +1,5 @@
 package integration;
 
-import controller.Controller;
-import model.CashRegister;
 import model.Sale;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,9 +40,16 @@ class InventorySystemTest {
     }
 
     @Test
-    void getItemNotExists() throws ItemNotFoundException {
-        ItemDTO x = invSys.getItem(412);
-        assertNull(x);
+    void getItemNotExists() {
+        int itemID = 500;
+        try {
+            invSys.getItem(itemID);
+            fail("Item not in database found, FAIL");
+        }catch(ItemNotFoundException e){
+            assertTrue(e.getMessage().contains("No item with that item ID: " + itemID));
+        }
+
+        //assertNull(x);
     }
 
     @Test

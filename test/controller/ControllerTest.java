@@ -1,15 +1,10 @@
 package controller;
 
-import integration.ItemNotFoundException;
-import integration.Printer;
-import integration.SalesLog;
-import integration.SystemCreator;
+import integration.*;
 import model.CashRegister;
-import model.Sale;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import startup.Main;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -66,5 +61,30 @@ class ControllerTest {
 
     @Test
     void endSale() {
+    }
+
+    @Test
+    void scanItemNotExist(){
+        contr.newSale();
+        int itemID = 111;
+        try {
+            contr.registerItem(itemID, 2);
+        }catch(ItemNotFoundException e){
+            assertTrue(e.getMessage().contains("No item with that item ID: " + itemID));
+        }
+    }
+
+    @Test
+    void scanItemDBDown() throws ItemNotFoundException{
+        contr.newSale();
+        int itemID = 10;
+        int nrOfitem = 3;
+        try{
+            contr.registerItem(itemID, nrOfitem);
+            fail("Item not in database found, FAIL");
+        }catch (ConnectionToDBFailedException e) {
+            assertTrue(e.getMessage().contains("System failed to reach database"));
+        }
+
     }
 }

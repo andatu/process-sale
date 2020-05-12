@@ -2,7 +2,6 @@ package view;
 
 import integration.Rounder;
 import model.Observer;
-import model.Payment;
 
 public class TotalRevenueDisplay implements Observer {
     private double totalRevenue;
@@ -11,8 +10,8 @@ public class TotalRevenueDisplay implements Observer {
     }
 
     @Override
-    public void addPayment(double payment) {
-        this.totalRevenue += payment;
+    public void addPayment(double paymentToAdd) {
+        this.totalRevenue += paymentToAdd;
         System.out.println("\nTOTAL REVENUE: " + Rounder.round(totalRevenue));
     }
 }

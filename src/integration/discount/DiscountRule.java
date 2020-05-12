@@ -1,4 +1,4 @@
-package integration;
+package integration.discount;
 
 import model.Sale;
 

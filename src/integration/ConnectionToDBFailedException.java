@@ -1,8 +1,8 @@
 package integration;
 
 /**
- * This class is an Exception that is thrown anytime we cannot
- * reach data in the database for whatever reason
+ * This class is an Exception that is thrown anytime we cannot.
+ * reach data in the database for whatever reason.
  */
 public class ConnectionToDBFailedException extends RuntimeException {
 

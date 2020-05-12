@@ -14,7 +14,7 @@ public class DiscountStrategyOne implements IDiscountBehavior{
     }
 
     @Override
-    public double discountRequest(int CustomerID, Sale sale) {
+    public double discountRequest(int customerID, Sale sale) {
         return sale.getTotalPriceAndVAT()*0.8;
     }
 }

@@ -1,6 +1,5 @@
 package integration;
 
-import exceptions.IDNotFoundException;
 import model.Sale;
 
 /**
@@ -11,6 +10,7 @@ public class InventorySystem {
     private static final InventorySystem INSTANCE = new InventorySystem();
     private ItemDTO[] items = new ItemDTO[10];
     private int numberOfItems = 0;
+    private final int dbCrasher = 10;
 
     /**
      *
@@ -47,18 +47,23 @@ public class InventorySystem {
      * @param itemID the item that is being registered
      * @return the item if it exists, else null
      */
-    public ItemDTO getItem(int itemID) {
+    public ItemDTO getItem(int itemID) throws ItemNotFoundException {
        // boolean tof = itemExists(itemID);
-        ItemDTO returnedItem = null;
-        for (int i = 0; i < this.numberOfItems; i++) {
-            if (itemID == this.items[i].getItemID()) {
-                returnedItem = this.items[i];
-                break;
-            }/*else{
-                throw new IDNotFoundException("No item with that item ID");
-            }*/
+        if(itemID==dbCrasher){
+            throw new ConnectionToDBFailedException("System failed to reach database");
+        }else {
+            ItemDTO returnedItem = null;
+            for (int i = 0; i < this.numberOfItems; i++) {
+                if (itemID == this.items[i].getItemID()) {
+                    returnedItem = this.items[i];
+                    break;
+                }
+            }
+            if(returnedItem==null){
+                throw new ItemNotFoundException("No item with that item ID: " + itemID);
+            }
+            return returnedItem;
         }
-        return returnedItem;
     }
 
 
@@ -76,8 +81,9 @@ public class InventorySystem {
         items[6] = new ItemDTO("Toothbrush", 30, 6, 20);
         items[7] = new ItemDTO("Shampoo", 25, 7, 20);
 
-        for(int i = 0; i < items.length; i++){
-            if(items[i] != null){
+        //for(int i = 0; i < items.length; i++){
+        for (ItemDTO item : items) {
+            if (item != null) {
                 this.numberOfItems += 1;
             }
         }

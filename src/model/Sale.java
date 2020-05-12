@@ -39,7 +39,7 @@ public class Sale {
         }
         else{
             for(int i = 0; i < numberOfTotalDifferentItems; i++){
-                if(addItem.getItemID() == items[i].getItemDTO().getItemPrice()){
+                if(addItem.getItemID() == items[i].getItemDTO().getItemID()){
                     items[i].setHowMany(numberOfItems);
                     break;
                 }

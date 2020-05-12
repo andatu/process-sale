@@ -10,8 +10,8 @@ public class CashRegister {
     private double cashInRegister = 2000;
     private double addedToRegister;
 
-    /**
-     * Adds payment to register
+     /**
+     * Adds payment to register.
      * @param payment of the sale
      */
     public void addPayment(Payment payment) {
@@ -19,7 +19,9 @@ public class CashRegister {
         //this.addedToRegister = payment.getAmount() - payment.getChange();
         this.cashInRegister += payment.getAddToRegister();
         //this.cashInRegister += payment.getAmount() - payment.getChange();
-        System.out.println("Adding " + Rounder.round((payment.getAmount() - payment.getChange())) + " to the Cash Register");
+        System.out.println("Adding " +
+                Rounder.round((payment.getAmount() - payment.getChange()))
+                + " to the Cash Register");
     }
 
     public double getCashInRegister(){

@@ -6,7 +6,6 @@ import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * All calls to model pass through here
@@ -44,7 +43,7 @@ public class Controller {
      * @param itemID item to be added to the sale
      * @param numberOfItems how many of said items
      */
-    public String registerItem(int itemID, int numberOfItems){
+    public String registerItem(int itemID, int numberOfItems) throws ItemNotFoundException, ConnectionToDBFailedException {
         ItemDTO item = inventorySystem.getItem(itemID);
         sale.addItem(item, numberOfItems);
         return item.getItemDesc() + " " + item.getItemPrice();
