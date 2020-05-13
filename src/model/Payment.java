@@ -30,6 +30,11 @@ public class Payment {
     public void addPaymentObserver(Observer obs){
         paymentObservers.add(obs);
     }
+
+    /**
+     * Adds the observers to payment observers
+     * @param observers to be added
+     */
     public void addPaymentObservers(List<Observer> observers){
         paymentObservers.addAll(observers);
         notifyObservers();
